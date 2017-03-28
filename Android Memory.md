@@ -3,7 +3,7 @@
 > Knowledge for Android Render Performance , Memory and Garbage Collection
 
 ## Understanding Android Threading
-寻找合适的帮手帮助更新UIThread
+寻找合适的帮手帮助更新UIThread，下列四个各司其职，各有各的场景
 - AsyncTask
   > helps get work on/off the UI thread
 - HandlerThread
@@ -18,7 +18,39 @@ you can use this to help you analysis your thread
 ## Thread and Memory
 ## Good AsyncTask Hunting
 
+- Basis
+- Some Misunderstanding
+- To Cancel some work
+    - Check a "canceled" flag
+    - Report work results invalid
+  
+  Inner class contains Implicit reference to outer Activity
+  下面一种做法会导致隐式引用，请避免
+  ```
+  
+  public class MainActivity extends Activity{
+      // 这样写，由于Activity的生命周期长于
+      public class MyAsyncTask extends AsyncTask<Void,Void,String> { 
+          @Override protected String doInBackground(Void... params){...}
+          @Override protected void onPostExecute(String result) {...}
+      }
+  }
+  
+  ```
+  
+## HandlerThread
+> HandlerThread is for a long-running thread that grabs(抓住) work from a queue and operates on it
+  
+## Swimming in Threadpools
 
+- ThreadPoolExecutor
+> ThreadPoolExecutor is for 处理大量耗时操作
+## The Zen of IntentService
+## Thread and Loaders
+
+- loaders
+  > Loaders are wise to the inner workings of activity lifecycle, so you can ensure your work ends in the right place every time
+  
 ## Do not leak views
 
 - 不要引用Async Callbacks(异步回调函数)内部的视图
