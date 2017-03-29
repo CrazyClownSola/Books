@@ -56,3 +56,17 @@ you can use this to help you analysis your thread
 - 不要引用Async Callbacks(异步回调函数)内部的视图
 - 不要从静态对象中引用视图
 - 避免将视图放进没有明确内存模式的收集中
+
+## Marshmallow Update: Profile GPU Rendering
+
+- Sync & Upload
+> it takes to upload bitmap information to the GPU
+
+## Cachematters for networking 
+- DiskLruCache.java
+- Tools: [Network Traffic Tool](https://developer.android.com/studio/profile/ddms.html#network?utm_campaign=android_series_#cachematters_for_networking_101315&utm_source=anddev&utm_medium=yt-annt) in Android Studio or [ARO tool](https://developer.att.com/application-resource-optimizer?utm_campaign=android_series_#cachematters_for_networking_101315&utm_source=anddev&utm_medium=yt-annt)
+
+## Optimizing Network Request Frequencies
+
+- Battery & Networking 
+> Network 请求是最大的单一耗电王 
