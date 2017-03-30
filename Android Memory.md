@@ -70,3 +70,21 @@ you can use this to help you analysis your thread
 
 - Battery & Networking 
 > Network 请求是最大的单一耗电王 
+
+## Effective Prefetching
+- GCMNetworkManager
+The GCM enables client apps to register services that perform(实现) network-oriented(网络化) tasks based on specified criteria(指定标准) such as :
+    - Schedule one-off vs. periodic tasks.(安排一次周期性任务)
+    - Automatic back-off and failure retry.(自动重连)
+    - Awareness of network activity.(意识到网络请求)
+    - Awareness of device charging state.(意识到设备进入充电状态)
+
+## Adapting To Latency
+> 处理你的app 适应网络环境的变更
+- Gather information 做网络算法获取到网络情况
+- Make adjustments 
+    
+## Do Something with Overdraw
+
+- Cliprect
+- QuickReject
