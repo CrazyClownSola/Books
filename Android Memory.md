@@ -83,8 +83,38 @@ The GCM enables client apps to register services that perform(实现) network-or
 > 处理你的app 适应网络环境的变更
 - Gather information 做网络算法获取到网络情况
 - Make adjustments 
-    
+
+## Minimizing Asset Payload
+> 可以利用AT&T的RBO工具
+
+- PNG is not Enough 
+> if you dont use alpha ,dont use png
+- Array-of-Structures(利用二进制序列化格式) Protocol Buffers、Nano-Proto-BUffers、FlatBuffers 进行数据传参 
+> Https 对于序列化参数采用的压缩算法是 GZIP
+- Struct-Of-Arrays(把数据构造转成对数据的转置)
+> 通过数据结构的重新序列化，可以使得相同的数据进行简单排列
+- Serializable  是一种非常不好的实现，这种方式会占用大量内存，同时产生编码负担，可以采用GSON 进行替代，但是GSON的最大缺点是产生的json文件中会有很多冗余的语法存在
+- Protocol Buffers 
+> google提供的库，既紧凑又灵活，但是缺点是依赖于 Java安装这对于移动开发不是很理想
+- Nano-Proto-Buffers
+> 是为android专门优化过的Protocol Buffers 
+- FlatBuffers
+> 这个格式是有google的一个游戏团队开发的，非常强调性能，几乎在解码和编码的时候不占用任何时间
+
 ## Do Something with Overdraw
 
 - Cliprect
 - QuickReject
+
+## Service Performance Patterns
+> Service 是指Activity在自身生命周期之外，仍旧需要指示操作系统运行长时间的任
+通常可以通过下列很多方法去替代Service
+  Async Event Functions
+  - GCM
+  - BroadcastReciever
+  - LocalBroadcastReciever
+  - WekefulBroadcastReciever
+  - HandlerThreads
+  - AsyncTaskLoaders
+  - IntentService
+
