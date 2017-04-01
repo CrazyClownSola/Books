@@ -118,3 +118,18 @@ The GCM enables client apps to register services that perform(实现) network-or
   - AsyncTaskLoaders
   - IntentService
 
+## Fun with ArrayMaps
+> 集合是对于性能优化一个最致命的点，但是HashMap在创建的时候会占用大量的内存去保证他自身数组的有效性，所以Android专门为移动开发创建了新的类ArrayMa
+> ArrayMaps 对于集合数量不大(数量1000)的数据进行数据处理时的性能优化是HashMap的好几倍
+还有一个很好的优势是
+```
+// ArrayMap
+for(int i =0; i< map.size();i++){
+    Object key = map.keyAt(i)
+    Object val = map.valueAt(i)
+    ...
+}
+
+
+
+```
