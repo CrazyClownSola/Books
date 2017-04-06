@@ -133,3 +133,8 @@ for(int i =0; i< map.size();i++){
 ```
 ## FusedLocationProviderApi
 > google 提供的Location Api接口
+
+## Dont leak View
+- Use [Hierarchy Viewer](https://developer.android.com/studio/profile/hierarchy-viewer.html#start)
+- Use [Systrace](https://developer.android.com/studio/profile/systrace.html#app-trace)
+- Use Update GPU
