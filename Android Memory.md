@@ -138,3 +138,37 @@ for(int i =0; i< map.size();i++){
 - Use [Hierarchy Viewer](https://developer.android.com/studio/profile/hierarchy-viewer.html#start)
 - Use [Systrace](https://developer.android.com/studio/profile/systrace.html#app-trace)
 - Use Update GPU
+
+## LRU Cache 
+最佳实践
+
+```
+ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+int availMemlnBytes = am.getMemoryClass() * 1024 * 1024;
+LruCache bitmapCache = new LruCache<String,Bitmap>(availMemlnBytes/8);
+```
+
+```
+public class ThumbnailCache extends LruCache(String , Bitmap) {
+    
+    @Override
+    protected int sizeOf(String key,Bitmap value){
+      return value.getByteCount();
+    } 
+}
+
+Bitmap bmpToDraw = mCache.get(filename);
+if(bmpToDraw == null){
+  bmpToDraw = BitmapFactory.decodeFile(filename);
+  mCache.put(filename.bmpToDraw);
+}
+
+```
+## Smaller Pixel Formats
+
+```
+mBitmapOptions = new BitmapFactory.Options();
+mBitmapOptions.inPreferredConfig = Bitmap.Config.RGB_565;
+BitmapFactory.decodeResource(getResources(),R.drawable.firstBitmap,mBitmapOptions);
+```
+## [webP](https://developers.google.com/speed/webp/?csw=1)
